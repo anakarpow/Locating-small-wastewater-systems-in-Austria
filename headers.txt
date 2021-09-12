@@ -1,0 +1,27 @@
+Unnamed: 0
+Bezirk
+Name
+Ew60_Bewilligt
+Bewilligungsjahr
+Rechtswert
+Hochwert
+Mechan.
+Biolog.
+Chemisch
+Unbek.
+Betrieb
+Stillgelegt
+Unbek
+3-k
+Bel.
+SBR
+MBR
+Tropf
+RBC
+Fest
+Worbel
+PKA
+Filtersack
+Kompost
+Andere
+Unbekannt
