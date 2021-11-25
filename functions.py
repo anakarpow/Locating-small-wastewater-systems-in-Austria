@@ -114,6 +114,11 @@ def col_dropper_slice(start, stop, df, test=False):
     df = df.drop(df.columns[col_drop], axis=1)
 
 
+#def unify_halfway(df):
+    
+
+
+
 ''''
 SUBSETS
 bautyp=trial[["Mechan.", "Biolog.", "Chemisch", "Unbek."]]

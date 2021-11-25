@@ -1,6 +1,12 @@
 output/
 DATA/
 final/
+half-way/
+markdowns/
+plots/
+share/
+archive/
+standard/
 .ipynb_checkpoints/
 .pytest_cache/
-_pycache_/
+__pycache__/
