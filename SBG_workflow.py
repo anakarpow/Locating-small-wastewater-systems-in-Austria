@@ -48,9 +48,13 @@ data['no_nitri']=data.tech_type=='3-k'
 
 data.to_excel('half-way/SBG.xlsx',index=False)
 
+#sum_nonitri=get_nonitri_sum(data)
+
 merged=join_nospat(data)
 
 extracted=extract_data_nospat(merged)
 
+
+#extracted=insert_nonitri_sum(sum_nonitri,extracted)
 
 final=final_merge_nospat(extracted, 'SBG')

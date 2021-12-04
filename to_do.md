@@ -1,11 +1,26 @@
 ### To do's
 
 # create testing tool : 
-    >check other bLS for PE original >>> DONE
+    >>>> DONE
 
 # create plottin tools:
-    > one for each kind of graph
+    > make plotting more agile
     > think first
+
+# for pres only focus on maps
+    > finish unify process to finish maps >>> DONE
+    > hot wo solve steyr year NAs??  # don't solve it, avoid for now
+    > plot together and separately. use plotting tools
+    > analyse
+    > write poster
+
+# which scheme to use for plotting?
+    > make some research !!
+
+# heatmap
+    > still don't know
+
+
 
 
 
@@ -20,7 +35,9 @@
     >what to do ?
 
 
-# create testing tool : 
+
+# ARCHIVE
+# create testing tool : >>>>> DONE
 >check if data at the end = data at beginning
     >control is Gunters paper, except Oebo
     >eckdaten:

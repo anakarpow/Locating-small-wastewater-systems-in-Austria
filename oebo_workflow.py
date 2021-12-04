@@ -90,12 +90,16 @@ final=final_merge_oebo(extracted)
 final['%nitri']=final.NITRIFIZIERUNG/final.freq*100
 final['%no_nitri']=100-final['%nitri']
 final['%before_reg']=final.before_reg/final.freq*100
-
+final['no_nitri']=final.freq-final.NITRIFIZIERUNG
 
 #standardize to general format
 standard=final[['BKZ', 'BL', 'FL', 'GKZ', 'KG', 'KG_NR', 'before_reg', 'freq',
        'mean_year', 'sum_PE', 'geometry', '%before_reg',
        '%no_nitri']]
+
+with open('final/oebo.geojson', 'w') as f:
+    f.write(final.to_json())
+
 
 ##### col names for standardization to do
 with open('standard/oebo.geojson', 'w') as f:

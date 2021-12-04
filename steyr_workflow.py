@@ -10,6 +10,13 @@ data.dropna(how='all', axis=1,inplace=True)
 data=cleaner(data,['Unnamed: 0', 'ID','Typ','Subtyp','Gewässer','Unnamed: 7','lfd.Nr.'])
 
 data=data[~data.KG.isna()]
+print(data[data.Jahr.isna()])  ###here we go 160 NAs
+#####3
+#just for now -deleting NA in years because it destroys mean. which meybe is irrelevant anyway
+data=data[data.Jahr>1700]
+
+
+
 data=data.fillna(0)
 conditions_tech = [
     data["Unbek."] == 1,
@@ -61,13 +68,13 @@ data.drop(columns=['KG'],inplace=True)
 data['before_reg']=data.Jahr<=1991
 data['no_nitri']=data.bautyp=='Mech'
 data.rename(columns={'KG_name':'KG', 'EW':'PE', 'Jahr':'year'}, inplace=True)
-data.replace(' ',0, inplace=True)  #about 1000 rows are 0 for column PE
+data.PE.replace(' ',0, inplace=True)  #about 1000 rows are 0 for column PE
 data.PE=data.PE.astype(int)
 data.KG_NR=data.KG_NR.astype(int)
 
 
 data.to_excel('half-way/steyr.xlsx', index=False)
-print(data.KG_NR.dtype)
+
 
 merged=join_nospat(data)
 
