@@ -65,17 +65,15 @@ def extract_data_oebo(joined):
 
     insert column for each Tech_type sum ? like sum_SBR=5
     """
+    joined=get_nonitri_sum2(joined)
     df1=joined.groupby(['KG_NR','KG']).agg(lambda row: np.count_nonzero(row)).reset_index()
-    df2=joined.groupby(['KG_NR','KG']).sum().reset_index().loc[:,['KG_NR','EW60','Tonne TM']]
+    df2=joined.groupby(['KG_NR','KG']).sum().reset_index().loc[:,['KG_NR','EW60','Tonne TM','PE_nonitri']]
     df3=joined.groupby(['KG_NR','KG']).mean().astype(int).reset_index().loc[:,['KG_NR','INBETRIEBNAHME']]
     merged=pd.merge(df2,df3, on='KG_NR')
     extracted=df1.merge(merged,on='KG_NR')
-    extracted.rename(columns={'EW60_y':'sum_PE','Tonne TM_y':'sum_TM(t)','INBETRIEBNAHME_y':'mean_year','MERIDIAN':'freq' },inplace=True)
+    extracted.rename(columns={'EW60_y':'sum_PE','Tonne TM_y':'sum_TM(t)','INBETRIEBNAHME_y':'mean_year','MERIDIAN':'freq','PE_nonitri_y':'PE_nonitri' },inplace=True)
     extracted=extracted[['KG_NR','freq', 'REINIGUNG MECHANISCH', 'C-ENTFERNUNG',
-    'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg', 'sum_PE','sum_TM(t)','mean_year']]
-    print(extracted)
-    extracted=get_nonitri_sum2(extracted)
-    print(extracted)
+    'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg', 'sum_PE','sum_TM(t)','mean_year','PE_nonitri']]
 
     return extracted
 
@@ -91,11 +89,17 @@ def final_merge_oebo(extracted):
     shp.to_crs(epsg=4326, inplace=True)
     final=pd.merge(shp,extracted, on='KG_NR')
 
+    #getting relative values
+    final['%nitri']=final.NITRIFIZIERUNG/final.freq*100
+    final['%no_nitri']=100-final['%nitri']
+    final['%before_reg']=final.before_reg/final.freq*100
+    final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
+
 
     print(final.geometry.is_valid.value_counts())
     final=final[['BL', 'BKZ', 'GKZ', 'KG_NR', 'KG', 'FL', 'geometry','freq', 'REINIGUNG MECHANISCH', 'C-ENTFERNUNG',
        'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg',
-       'sum_PE', 'sum_TM(t)', 'mean_year','%PE_no_nitri','sum_PE_nonitri' ]]
+       'sum_PE', 'sum_TM(t)', 'mean_year', '%nitri','%no_nitri' ,'%before_reg','%PE_nonitri', 'PE_nonitri' ]]
     with open('final/oebo.geojson', 'w') as f:
         f.write(final.to_json())
     return final
@@ -109,17 +113,18 @@ def extract_data_noe(joined):
 
     insert column for each Tech_type sum ? like sum_SBR=5
     """
+    joined.rename(columns={'EW60':'PE'},inplace=True)
+    joined=get_nonitri_sum2(joined)
     df1=joined.groupby(['KG_NR','KG']).agg(lambda row: np.count_nonzero(row)).reset_index()
-    df2=joined.groupby(['KG_NR','KG']).sum().reset_index().loc[:,['KG_NR','EW60']]
+    df2=joined.groupby(['KG_NR','KG']).sum().reset_index().loc[:,['KG_NR','PE','PE_nonitri']]
     try:
         df3=joined.groupby(['KG_NR','KG']).mean().astype(int).reset_index().loc[:,['KG_NR','INBETRIEBNAHME']]
     except:
         df3=joined.groupby(['KG_NR','KG']).mean().reset_index().loc[:,['KG_NR','INBETRIEBNAHME']].astype(int)
     merged=pd.merge(df2,df3, on='KG_NR')
     extracted=df1.merge(merged,on='KG_NR')
-    extracted.rename(columns={'EW60_y':'sum_PE','INBETRIEBNAHME_y':'mean_year','MERIDIAN':'freq' },inplace=True)
-    extracted=extracted[['KG_NR','freq','before_reg', 'sum_PE','mean_year', 'no_nitri']]
-    extracted=get_nonitri_sum2(extracted)
+    extracted.rename(columns={'PE_y':'sum_PE','INBETRIEBNAHME_y':'mean_year','MERIDIAN':'freq','PE_nonitri_y':'PE_nonitri' },inplace=True)
+    extracted=extracted[['KG_NR','freq','before_reg', 'sum_PE','mean_year', 'no_nitri','PE_nonitri']]
     return extracted
 
 def final_merge_noe(extracted):
@@ -138,6 +143,8 @@ def final_merge_noe(extracted):
     #getting relative values
     final['%before_reg']=final.before_reg/final.freq*100
     final['%no_nitri']=final.no_nitri/final.freq*100
+    final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
+
 
     with open('final/noe.geojson', 'w') as f:
         f.write(final.to_json())
@@ -192,10 +199,10 @@ def extract_data_nospat(joined):
 
     insert column for each Tech_type sum ? like sum_SBR=5
     """
-    #PE_nonitri=get_nonitri_sum2(joined)
+    joined=get_nonitri_sum2(joined)
 
     df1=joined.groupby(['KG_NR']).agg(lambda row: np.count_nonzero(row)).reset_index()
-    df2=joined.groupby(['KG_NR']).sum().reset_index().loc[:,['KG_NR','PE']]
+    df2=joined.groupby(['KG_NR']).sum().reset_index().loc[:,['KG_NR','PE','PE_nonitri']]
     try:
         df3=joined.groupby(['KG_NR']).mean().astype(int).reset_index().loc[:,['KG_NR','year']]
     except :
@@ -203,10 +210,9 @@ def extract_data_nospat(joined):
 
     merged=pd.merge(df2,df3, on='KG_NR')
     extracted=df1.merge(merged,on='KG_NR')
-    extracted.rename(columns={'PE_y':'sum_PE','year_y':'mean_year','MERIDIAN':'freq' },inplace=True)
-    extracted=extracted[['KG_NR','freq','before_reg', 'sum_PE','mean_year', 'no_nitri']]
-    #extracted.join(PE_nonitri, on='KG_NR')
 
+    extracted.rename(columns={'PE_y':'sum_PE','year_y':'mean_year','MERIDIAN':'freq', 'PE_nonitri_y':'PE_nonitri' },inplace=True)
+    extracted=extracted[['KG_NR','freq','before_reg', 'sum_PE','mean_year', 'no_nitri','PE_nonitri']]
     return extracted
 
 def final_merge_nospat(extracted, BL_name):
@@ -226,6 +232,7 @@ def final_merge_nospat(extracted, BL_name):
     #getting relative values
     final['%no_nitri']=final.no_nitri/final.freq*100
     final['%before_reg']=final.before_reg/final.freq*100
+    final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
 
     #`final=standardize_format(final)
 
@@ -278,6 +285,8 @@ def insert_nonitri_sum(no_nitri_sum, df):
     return data
 
 
+
+### get this done !!!
 def get_nonitri_sum2(df):
     def cond(df):
         try:
@@ -288,30 +297,13 @@ def get_nonitri_sum2(df):
                 
         except:
             if df['NITRIFIZIERUNG']==False:
-                return df['sum_PE']
+                return df['EW60']
             else:
                 return 0
 
 
-    PE_nonitri=df.apply(cond, axis=1)
-
-    return PE_nonitri
-    try:
-        df['%PE_no_nitri']=(df.PE_nonitri/df.PE)*100
-    except:
-        df['%PE_no_nitri']=(df.PE_nonitri/df.EW60)*100
-
+    df['PE_nonitri']=df.apply(cond, axis=1)
 
     return df
+ 
 
-
-
-"""
-try:
-        df['PE_nonitri']=df.apply(lambda row: print(row['PE']) )
-        df['%PE_no_nitri']=(df.PE_nonitri/df.sum_PE)*100
-    except:
-        df['PE_nonitri']=df.apply(df.PE if df.NITRIFIZIERUNG==False else 0 )
-        df['%PE_no_nitri']=(df.PE_nonitri/df.sum_PE)*100
-
-"""

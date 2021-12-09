@@ -3,28 +3,18 @@
 # create testing tool : 
     >>>> DONE
 
-# create plottin tools:
-    > make plotting more agile
-    > think first
 
 # for pres only focus on maps
     > finish unify process to finish maps >>> DONE
     > hot wo solve steyr year NAs??  # don't solve it, avoid for now
-    > plot together and separately. use plotting tools
     > analyse
     > write poster
 
+    unify with all values 
+    continue from unify workflow
+
 # which scheme to use for plotting?
     > make some research !!
-
-# heatmap
-    > still don't know
-
-
-
-
-
-
 
 ### Status
 # 6 BL reached final phase
@@ -47,3 +37,9 @@
         > all fine. just PE are strange. look further
         > data elaboration did not modify PE original. 
         > where is the error ? 
+
+# create plottin tools:
+    > make plotting more agile
+    > think first
+# heatmap
+    > still don't know
