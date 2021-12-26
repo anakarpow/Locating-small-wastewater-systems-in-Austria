@@ -1,20 +1,12 @@
 ### To do's
 
-# create testing tool : 
-    >>>> DONE
-
-
-# for pres only focus on maps
-    > finish unify process to finish maps >>> DONE
-    > hot wo solve steyr year NAs??  # don't solve it, avoid for now
-    > analyse
-    > write poster
-
-    unify with all values 
-    continue from unify workflow
-
 # which scheme to use for plotting?
     > make some research !!
+
+# resolution per KG and PG seems achieved
+# identifying non-nitrifying wwtps seeems achieved
+# start summarisiing and writing 
+# then send to Gunter
 
 ### Status
 # 6 BL reached final phase
