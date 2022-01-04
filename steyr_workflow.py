@@ -8,20 +8,23 @@ d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA STMK NEU DE.xl
 data, trial = reader(d, 'Data Stmk', header=18, test=False)
 data.dropna(how='all', axis=1,inplace=True)
 data=cleaner(data,['Unnamed: 0', 'ID','Typ','Subtyp','Gewässer','Unnamed: 7','lfd.Nr.'])
-
-data=data[~data.KG.isna()]
-print(data[data.Jahr.isna()])  ###here we go 160 NAs
+no_geo=data[data.KG.isna()]
+no_geo.to_excel('half-way/no_geo_steyr.xlsx', index=False)
+#data=data[~data.KG.isna()] # AGGREAGTION TO gemeinde may be possible
+#print(data[data.Jahr.isna()])  ###here we go 160 NAs
 #####3
-#just for now -deleting NA in years because it destroys mean. which meybe is irrelevant anyway
-data=data[data.Jahr>1700]
 
+#some have wrong year. keep anyway. 
+#data=data[data.Jahr>1700]
+#print(len(data[data.Jahr<1700]))
+#data.year=data.year.fillna(0)
 
 
 data=data.fillna(0)
 conditions_tech = [
     data["Unbek."] == 1,
     data["Mehr-kammer"] == 1,
-    data["Durchl."] == 1, #
+    data["Durchl."] == 1, 
     data["SBR"] == 1,
     data["MBR"] == 1,
     data["Tropf"] == 1,
@@ -69,6 +72,8 @@ data['before_reg']=data.Jahr<=1991
 data['no_nitri']=data.bautyp=='Mech'
 data.rename(columns={'KG_name':'KG', 'EW':'PE', 'Jahr':'year'}, inplace=True)
 data.PE.replace(' ',0, inplace=True)  #about 1000 rows are 0 for column PE
+
+data=data.fillna(0)
 data.PE=data.PE.astype(int)
 data.KG_NR=data.KG_NR.astype(int)
 
@@ -76,9 +81,18 @@ data.KG_NR=data.KG_NR.astype(int)
 data.to_excel('half-way/steyr.xlsx', index=False)
 
 
-merged=join_nospat(data)
+merged=join_nospat(data, 'steyr')
 
 extracted=extract_data_nospat(merged)
 
 
 final=final_merge_nospat(extracted, 'steyr')
+
+data=data[data.PE<=50]
+
+merged=join_nospat(data, 'steyr_KKA')
+
+extracted=extract_data_nospat(merged)
+
+
+final=final_merge_nospat(extracted, 'steyr_KKA')

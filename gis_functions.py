@@ -36,7 +36,7 @@ def file_to_gdf(file,control=False):
 
 
 
-def sjoin(gdf):
+def sjoin(gdf, BL_name):
     """
     spatial join for point geometries
     return gdf 
@@ -47,6 +47,14 @@ def sjoin(gdf):
     shp.KG_NR = shp.KG_NR.astype(int)
     shp.to_crs(epsg=4326, inplace=True)
     joined = geopandas.sjoin(shp, gdf, how='inner')
+    if len(joined)==len(gdf):
+        print('perfect merge')
+    else:
+        print('not all rows have been merged')
+        print(len(gdf)-len(joined))
+        #not_merged=gdf[~gdf.index.isin(joined.index)]
+        #not_merged.to_excel('final/'+ BL_name+'_not_merged.xlsx')
+
     print('done')
 
     # insert this in preprocessing
@@ -77,7 +85,7 @@ def extract_data_oebo(joined):
 
     return extracted
 
-def final_merge_oebo(extracted):
+def final_merge_oebo(extracted, filename):
     """
     return geojson with one row per KG
     contains geoinformation and ready to plot
@@ -90,6 +98,7 @@ def final_merge_oebo(extracted):
     final=pd.merge(shp,extracted, on='KG_NR')
 
     #getting relative values
+    final['no_nitri']=final.freq-final.NITRIFIZIERUNG
     final['%nitri']=final.NITRIFIZIERUNG/final.freq*100
     final['%no_nitri']=100-final['%nitri']
     final['%before_reg']=final.before_reg/final.freq*100
@@ -100,7 +109,7 @@ def final_merge_oebo(extracted):
     final=final[['BL', 'BKZ', 'GKZ', 'KG_NR', 'KG', 'FL', 'geometry','freq', 'REINIGUNG MECHANISCH', 'C-ENTFERNUNG',
        'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg',
        'sum_PE', 'sum_TM(t)', 'mean_year', '%nitri','%no_nitri' ,'%before_reg','%PE_nonitri', 'PE_nonitri' ]]
-    with open('final/oebo.geojson', 'w') as f:
+    with open('final/'+filename+'.geojson', 'w') as f:
         f.write(final.to_json())
     return final
 
@@ -127,7 +136,7 @@ def extract_data_noe(joined):
     extracted=extracted[['KG_NR','freq','before_reg', 'sum_PE','mean_year', 'no_nitri','PE_nonitri']]
     return extracted
 
-def final_merge_noe(extracted):
+def final_merge_noe(extracted, filename):
     """
     return geojson with one row per KG
     contains geoinformation and ready to plot
@@ -145,8 +154,15 @@ def final_merge_noe(extracted):
     final['%no_nitri']=final.no_nitri/final.freq*100
     final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
 
+    if len(extracted)==len(final):
+        print('perfect merge')
+    else:
+        print('not all rows have been merged')
+        not_merged=extracted[~extracted.KG_NR.isin(final.KG_NR)]
+        not_merged.to_excel('final/' +filename+'not_merged2.xlsx')
+    print()
 
-    with open('final/noe.geojson', 'w') as f:
+    with open('final/'+filename+'.geojson', 'w') as f:
         f.write(final.to_json())
     return final
 
@@ -177,7 +193,7 @@ def standard_form(d, col_KG, col_KG_nr, col_date, col_EW, col_type, col_tech, mi
 #NON-SPATIAL ROUTINE
 ########################################################
 
-def join_nospat(df):
+def join_nospat(df, filename):
     shp = geopandas.read_file('DATA/shp_new/Oesterreich_BEV_VGD_LAM.shp')
     shp.KG_NR = shp.KG_NR.astype(int)
     shp.to_crs(epsg=4326, inplace=True)
@@ -187,7 +203,7 @@ def join_nospat(df):
     else:
         print('not all rows have been merged')
         not_merged=df[~df.KG_NR.isin(merged.KG_NR)]
-        not_merged.to_excel('final/not_merged.xlsx')
+        not_merged.to_excel('final/' +filename+'not_merged.xlsx')
     print()
 
     return merged
@@ -229,12 +245,22 @@ def final_merge_nospat(extracted, BL_name):
 
     print(final.geometry.is_valid.value_counts())
 
+    if len(extracted)==len(final):
+        print('perfect merge')
+    else:
+        print('not all rows have been merged')
+        not_merged=extracted[~extracted.KG_NR.isin(final.KG_NR)]
+        not_merged.to_excel('final/' +BL_name+'not_merged2.xlsx')
+    print()
+
+
     #getting relative values
     final['%no_nitri']=final.no_nitri/final.freq*100
     final['%before_reg']=final.before_reg/final.freq*100
     final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
 
     #`final=standardize_format(final)
+
 
     with open('final/' + BL_name +'.geojson', 'w') as f:
         f.write(final.to_json())

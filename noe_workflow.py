@@ -18,7 +18,6 @@ data, trial = reader(d, 'Data NÖ (Technol)', header=5, test=False)
 
 data = cleaner(data, ["Unnamed: 0", "Unnamed: 28",
                "Unnamed: 29", "Unnamed: 30"])
-#data=data[data['EW60_BEWILLIGT']<=50]
 
 #work on bautyp
 bautyp = data[["Mechan.", "Biolog.", "Chemisch", "Unbek."]]
@@ -42,12 +41,7 @@ data
 col_list = ['3-k', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 'Fest', 'Wirbel', 'BKF', 'PKA', 'Filtersack',
          'Kompost', 'Andere', 'Unbekannt']
 
-def change_colname_index(start, df, col_list):
-    count=start
-    for name in col_list:
-        df.columns.values[count]=name
-        count=count+1
-    print(df.columns)
+
 
 change_colname_index(9, data,col_list)
 conditions_tech = [
@@ -62,13 +56,14 @@ conditions_tech = [
     data["Wirbel"] == 1,
     data["BKF"] == 1,
     data["PKA"] == 1,
+    data["PKA"] == '1',
     data["Filtersack"] == 1,
     data["Kompost"] == 1,
     data["Andere"] == 1,
 ]
 
 
-outcome_tech = ['Unbekannt', '3-k', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 'Fest', 'Wirbel', 'BKF', 'PKA', 'Filtersack',
+outcome_tech = ['Unbekannt','3-k', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 'Fest', 'Wirbel', 'BKF', 'PKA','PKA', 'Filtersack',
                 'Kompost', 'Andere']
 
 #
@@ -104,9 +99,10 @@ no_geo=data[data.RECHTSWERT.isna()]
 no_type=data[data.tech_type=='Unbekannt']
 
 #print out esxcel. needs column dropping
-data.to_excel('half-way/noe.xlsx',index=False)
+data.to_excel('half-way/noe.xlsx',index=True)
 
-no_geo.to_excel('half-way/no_geo_noe.xlsx')
+#anyway in halfway
+#no_geo.to_excel('half-way/no_geo_noe.xlsx')
 no_type.to_excel('half-way/no_type_noe.xlsx')
 
 
@@ -119,18 +115,27 @@ gdf.rename(columns={'EW60_BEWILLIGT':'EW60','BEWILLIGUNGSJAHR':'INBETRIEBNAHME'}
 
 
 #perform geo manipulations
-joined=sjoin(gdf)
+joined=sjoin(gdf, 'noe')
 
 
 extracted=extract_data_noe(joined)
 
 print(extracted)
 
-final=final_merge_noe(extracted)
+final=final_merge_noe(extracted, 'noe')
 
 
-with open('standard/noe.geojson', 'w') as f:
-    f.write(final.to_json())
+gdf=gdf[gdf.EW60<=50]
+
+#perform geo manipulations
+joined=sjoin(gdf, 'noe')
+extracted=extract_data_noe(joined)
+final=final_merge_noe(extracted, 'noe_KKA')
+
+
+
+#with open('standard/noe.geojson', 'w') as f:
+ #   f.write(final.to_json())
 
 
 #to do

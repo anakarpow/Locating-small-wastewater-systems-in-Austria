@@ -50,7 +50,9 @@ data.to_excel('half-way/SBG.xlsx',index=False)
 
 #sum_nonitri=get_nonitri_sum(data)
 
-merged=join_nospat(data)
+#lost 25 here
+merged=join_nospat(data, 'SBG')
+
 
 extracted=extract_data_nospat(merged)
 

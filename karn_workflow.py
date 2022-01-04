@@ -50,14 +50,13 @@ data['year']=data['year'].replace('?', '0')
 
 
 #add column built before 1991
-data.year=data.year.astype(int)
+#data.year=data.year.astype(int)
 
 data['before_reg']=data.year<=1991
 data['no_nitri']=data.tech_type=='3-k'
 
 
 data.to_excel('half-way/Karn.xlsx',index=False)
-
 #about 130 have no KG
 no_ref=data[data.KG.isna()]
 no_ref.to_excel('half-way/no_geo_karn.xlsx', index=False)
@@ -70,6 +69,7 @@ data.KG.fillna(0,inplace=True)
 
 merged=join_nospat(data)
 
+#270 are lost here. because of invalid KG
 extracted=extract_data_nospat(merged)
 
 

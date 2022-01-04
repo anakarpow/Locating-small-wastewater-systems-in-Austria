@@ -7,7 +7,6 @@ from  gis_functions import *
 d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA Tirol NEU.xlsx'
 data, trial = reader(d, 'Daten Tirol', header=18, test=False)
 
-data.columns
 tech_type=data[[1, 2,3,  4,5,6,7,8,9,10,11,12,13]]
 bautyp=data[['mech.','biol. ','chem.']]
 
@@ -48,10 +47,6 @@ data.dropna(how='all', axis=1,inplace=True)
 data.dropna(how='all', axis=0,inplace=True)
 #data=data.fillna(0)
 data=cleaner(data,['Unnamed: 0','Urkunde','Lageplan','Anmerkungen','Unnamed: 35', 'KKA', 'Kl. KA', '?'])
-#400 have no PE
-#data[data['EW 60']=='?']
-
-#replace them now
 
 data.rename(columns={'Unnamed: 5':'KG_name','Unnamed: 7':'tech_detail'},inplace=True)
 

@@ -1,8 +1,8 @@
 #contains complete workflow for oebo
-
+# -*- coding: utf-8 -*-
 
 #import data and packages
-import geopandas
+import geopandas as geopandas
 import pandas as pd
 import matplotlib.pyplot as plt
 from functions import *
@@ -11,6 +11,8 @@ from gis_functions import *
 #import anlagedata
 d='DATA/Sacken/Anlagendaten.xlsx'
 data=pd.read_excel(d)
+no_geo=data[data.Longitude.isna()]
+no_geo.to_excel('half-way/no_geo_oebo.xlsx',index=False)
 data=data.dropna(how='any', subset= ['Longitude'])
 
 #create geometry from coordinates 
@@ -31,7 +33,7 @@ anlage.loc[anlage.Bundesnummer.astype(str).str.contains('_'), 'Bundesnummer']='0
 #import dataset with wrong coords but technical features
 d = 'C:/Users/fabrizio/Documents/repos/MSC/DATA/Sacken/raw_data.xlsx'
 df=pd.read_excel(d, sheet_name='Rohdaten ARA 500 EW')
-df=df[df.EW60<51]
+df=df[df.EW60<=500]
 
 #prepare for merge
 anlage=anlage.astype({'Bundesnummer':'int'})
@@ -76,9 +78,10 @@ gdf['before_reg']=gdf.INBETRIEBNAHME<=1991
 gdf.replace({'j':True,'n':False}, inplace=True)
 
 gdf.to_excel('half-way/oebo.xlsx', index=False)
+gdf.to_file('half-way/oebo.gpkg', driver='GPKG')
 
 #perform geo manipulations
-joined=sjoin(gdf)
+joined=sjoin(gdf, 'oebo')
 
 #extract data
 extracted=extract_data_oebo(joined)

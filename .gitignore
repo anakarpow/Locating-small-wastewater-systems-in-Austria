@@ -7,6 +7,7 @@ markdowns/
 plots/
 share/
 archive/
+graphs/
 standard/
 .ipynb_checkpoints/
 .pytest_cache/
