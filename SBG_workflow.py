@@ -48,15 +48,23 @@ data['no_nitri']=data.tech_type=='3-k'
 
 data.to_excel('half-way/SBG.xlsx',index=False)
 
-#sum_nonitri=get_nonitri_sum(data)
 
 #lost 25 here
 merged=join_nospat(data, 'SBG')
 
+merged['design']=np.where(merged.PE<50, 'small','medium')
+small=merged[merged.design=='small']
+medium=merged[merged.design=='medium']
+small=extract_data_nospat(small)
+medium=extract_data_nospat(medium)
 
-extracted=extract_data_nospat(merged)
+total=small.merge(medium, on='KG_NR',how='outer',suffixes=('_small','_medium'))
+
+total=total.fillna(0)
+total['freq_tot']=total.freq_small+total.freq_medium
+total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
+total['no_nitri_tot']=total.no_nitri_small+total.no_nitri_medium
+total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
 
 
-#extracted=insert_nonitri_sum(sum_nonitri,extracted)
-
-final=final_merge_nospat(extracted, 'SBG')
+final=final_merge_nospat(total, 'SBG')

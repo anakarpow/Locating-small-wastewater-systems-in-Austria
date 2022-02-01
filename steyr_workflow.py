@@ -83,16 +83,30 @@ data.to_excel('half-way/steyr.xlsx', index=False)
 
 merged=join_nospat(data, 'steyr')
 
-extracted=extract_data_nospat(merged)
+merged['design']=np.where(merged.PE<50, 'small','medium')
+small=merged[merged.design=='small']
+medium=merged[merged.design=='medium']
+
+small=extract_data_nospat(small)
+medium=extract_data_nospat(medium)
+
+total=small.merge(medium, on='KG_NR',how='outer',suffixes=('_small','_medium'))
+
+total=total.fillna(0)
+total['freq_tot']=total.freq_small+total.freq_medium
+total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
+total['no_nitri_tot']=total.no_nitri_small+total.no_nitri_medium
+total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
 
 
-final=final_merge_nospat(extracted, 'steyr')
 
-data=data[data.PE<=50]
+final=final_merge_nospat(total, 'steyr')
 
-merged=join_nospat(data, 'steyr_KKA')
+#data=data[data.PE<=50]
 
-extracted=extract_data_nospat(merged)
+#merged=join_nospat(data, 'steyr_KKA')
+
+#extracted=extract_data_nospat(merged)
 
 
-final=final_merge_nospat(extracted, 'steyr_KKA')
+#final=final_merge_nospat(extracted, 'steyr_KKA')

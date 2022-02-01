@@ -5,7 +5,22 @@
 # start summarisiing and writing 
 # then send to Gunter
 
-# general question: how to manage KKA and <500 ???
+
+# get size integration
+    > oebo and noe
+
+
+# WRITING 
+    > introduction : add!
+    > goals : add!
+    >fundamentals : start!
+    >methods : 
+        >add approach ? 
+        >evise data analisys
+    >interpretation : 
+        >add!!
+
+    
 
 # integrate tech_type
     > unify final geojson categories. how to ? columns ?
@@ -14,25 +29,26 @@
 
 # write results
     >add mean value in graphs 
-    > add mean value popNoNitri in plot
-    > add no_data pattern in plots 
+    >add mean value popNoNitri in plot
 
 # write interpretation
     >add some graphs as written
-    >check legend of % nonnitri plot!!
-    > consider further analisys carintia
+    >consider further analisys carintia
 
 # get KKA separate files
     >DONE
     > integrate in main workflow
 
-# question Gunter
-    > NOE unbekkant > i have way higher nr than publication
-    >show control_data 
-    > recheck unbekannt procedure !
+# new points Gunter
+    >put count anlage map
+    >chnage no data color and viusalize 0 
+    >filtersack == primary
+    > add point coordinates study when available
+        > temporal ?
+    > % of state by tech type 
+    
 
-# check control procedure
-    > now is pure chaos!!!
+
 
 ### Status
 # 6 BL reached final phase

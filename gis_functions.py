@@ -56,12 +56,6 @@ def sjoin(gdf, BL_name):
         #not_merged.to_excel('final/'+ BL_name+'_not_merged.xlsx')
 
     print('done')
-
-    # insert this in preprocessing
-    # joined.INBETRIEBNAHME=joined.INBETRIEBNAHME.str.slice(0,4)
-    # joined=joined[joined.INBETRIEBNAHME!='<NUL']
-    # joined.INBETRIEBNAHME=joined.INBETRIEBNAHME.astype(int)
-
     return joined
 
 #################################################
@@ -82,6 +76,10 @@ def extract_data_oebo(joined):
     extracted.rename(columns={'EW60_y':'sum_PE','Tonne TM_y':'sum_TM(t)','INBETRIEBNAHME_y':'mean_year','MERIDIAN':'freq','PE_nonitri_y':'PE_nonitri' },inplace=True)
     extracted=extracted[['KG_NR','freq', 'REINIGUNG MECHANISCH', 'C-ENTFERNUNG',
     'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg', 'sum_PE','sum_TM(t)','mean_year','PE_nonitri']]
+
+
+
+    
 
     return extracted
 
@@ -228,7 +226,7 @@ def extract_data_nospat(joined):
     extracted=df1.merge(merged,on='KG_NR')
 
     extracted.rename(columns={'PE_y':'sum_PE','year_y':'mean_year','MERIDIAN':'freq', 'PE_nonitri_y':'PE_nonitri' },inplace=True)
-    extracted=extracted[['KG_NR','freq','before_reg', 'sum_PE','mean_year', 'no_nitri','PE_nonitri']]
+    extracted=extracted[['KG_NR','freq', 'sum_PE','mean_year', 'no_nitri','PE_nonitri']]
     return extracted
 
 def final_merge_nospat(extracted, BL_name):
@@ -255,11 +253,14 @@ def final_merge_nospat(extracted, BL_name):
 
 
     #getting relative values
-    final['%no_nitri']=final.no_nitri/final.freq*100
-    final['%before_reg']=final.before_reg/final.freq*100
-    final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
+    final['%no_nitri_small']=final.no_nitri_small/final.freq_small*100
+    final['%no_nitri_medium']=final.no_nitri_medium/final.freq_medium*100
+    final['%no_nitri_tot']=final.no_nitri_tot/final.freq_tot*100
 
-    #`final=standardize_format(final)
+    final['%PE_nonitri_small']=(final.PE_nonitri_small/final.sum_PE_small)*100
+    final['%PE_nonitri_medium']=(final.PE_nonitri_medium/final.sum_PE_medium)*100
+    final['%PE_nonitri_tot']=(final.PE_nonitri_tot/final.sum_PE_tot)*100
+
 
 
     with open('final/' + BL_name +'.geojson', 'w') as f:

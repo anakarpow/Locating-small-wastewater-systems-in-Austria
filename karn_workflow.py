@@ -50,9 +50,8 @@ data['year']=data['year'].replace('?', '0')
 
 
 #add column built before 1991
-#data.year=data.year.astype(int)
+data.year=data.year.astype(int)
 
-data['before_reg']=data.year<=1991
 data['no_nitri']=data.tech_type=='3-k'
 
 
@@ -67,10 +66,22 @@ data.KG.fillna(0,inplace=True)
 
 
 
-merged=join_nospat(data)
+merged=join_nospat(data, 'Karn')
+merged['design']=np.where(merged.PE<50, 'small','medium')
+small=merged[merged.design=='small']
+medium=merged[merged.design=='medium']
 
 #270 are lost here. because of invalid KG
-extracted=extract_data_nospat(merged)
+small=extract_data_nospat(small)
+medium=extract_data_nospat(medium)
+
+total=small.merge(medium, on='KG_NR',how='outer',suffixes=('_small','_medium'))
+
+total=total.fillna(0)
+total['freq_tot']=total.freq_small+total.freq_medium
+total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
+total['no_nitri_tot']=total.no_nitri_small+total.no_nitri_medium
+total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
 
 
-final=final_merge_nospat(extracted, 'Karn')
+final=final_merge_nospat(total, 'Karn')

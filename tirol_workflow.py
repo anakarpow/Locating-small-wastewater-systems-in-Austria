@@ -82,9 +82,22 @@ data.drop(columns=['Bis','m³/d', 'l/s', 'EW60 / m³/d','EW60 / l/s (10h)'], inp
 
 data.to_excel('half-way/tirol.xlsx',index=False)
 
-merged=join_nospat(data)
+merged=join_nospat(data, 'tirol')
 
-extracted=extract_data_nospat(merged)
+merged['design']=np.where(merged.PE<50, 'small','medium')
+small=merged[merged.design=='small']
+medium=merged[merged.design=='medium']
+
+small=extract_data_nospat(small)
+medium=extract_data_nospat(medium)
+
+total=small.merge(medium, on='KG_NR',how='outer',suffixes=('_small','_medium'))
+
+total=total.fillna(0)
+total['freq_tot']=total.freq_small+total.freq_medium
+total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
+total['no_nitri_tot']=total.no_nitri_small+total.no_nitri_medium
+total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
 
 
-final=final_merge_nospat(extracted, 'tirol')
+final=final_merge_nospat(total, 'tirol')
