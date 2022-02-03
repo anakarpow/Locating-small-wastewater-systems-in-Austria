@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from functions import *
 from gis_functions import *
 
-d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA NÖ NEU DE final.xlsx'
+d = r'C:\Users\fabrizio\Documents\repos\MSC\DATA/KKA NÖ NEU NEW.xlsx'
 
 data, trial = reader(d, 'Data NÖ (Technol)', header=5, test=False)
 
@@ -118,14 +118,28 @@ gdf.rename(columns={'EW60_BEWILLIGT':'EW60','BEWILLIGUNGSJAHR':'INBETRIEBNAHME'}
 joined=sjoin(gdf, 'noe')
 
 
-extracted=extract_data_noe(joined)
+joined['design']=np.where(joined.EW60<50, 'small','medium')
+small=joined[joined.design=='small']
+medium=joined[joined.design=='medium']
 
-print(extracted)
+small=extract_data_noe(small)
+medium=extract_data_noe(medium)
 
-final=final_merge_noe(extracted, 'noe')
+total=small.merge(medium, on='KG_NR',how='outer',suffixes=('_small','_medium'))
 
 
-gdf=gdf[gdf.EW60<=50]
+total=total.fillna(0)
+total['freq_tot']=total.freq_small+total.freq_medium
+total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
+total['no_nitri_tot']=total.no_nitri_small+total.no_nitri_medium
+total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
+total=total.fillna(0)
+
+
+final=final_merge_noe(total, 'noe')
+
+
+"""gdf=gdf[gdf.EW60<=50]
 
 #perform geo manipulations
 joined=sjoin(gdf, 'noe')
@@ -142,7 +156,7 @@ final=final_merge_noe(extracted, 'noe_KKA')
 #check standardize format function. why not workin g?
 
 
-
+"""
 
 
 

@@ -96,17 +96,26 @@ def final_merge_oebo(extracted, filename):
     final=pd.merge(shp,extracted, on='KG_NR')
 
     #getting relative values
+    """   
     final['no_nitri']=final.freq-final.NITRIFIZIERUNG
     final['%nitri']=final.NITRIFIZIERUNG/final.freq*100
     final['%no_nitri']=100-final['%nitri']
-    final['%before_reg']=final.before_reg/final.freq*100
-    final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
+    """
 
+    final['%no_nitri_small']=100-(final.freq_small-final.NITRIFIZIERUNG_small)/final.freq_small*100
+    final['%no_nitri_medium']=100-(final.freq_medium-final.NITRIFIZIERUNG_medium)/final.freq_medium*100
+    final['%no_nitri_tot']=100-(final.freq_tot-final.no_nitri_tot)/final.freq_tot*100
+
+    final['%PE_nonitri_small']=(final.PE_nonitri_small/final.sum_PE_small)*100
+    final['%PE_nonitri_medium']=(final.PE_nonitri_medium/final.sum_PE_medium)*100
+    final['%PE_nonitri_tot']=(final.PE_nonitri_tot/final.sum_PE_tot)*100
+
+    final.rename(columns={'NITRIFIZIERUNG_small':'no_nitri_small','NITRIFIZIERUNG_medium':'no_nitri_medium'},inplace=True)
 
     print(final.geometry.is_valid.value_counts())
-    final=final[['BL', 'BKZ', 'GKZ', 'KG_NR', 'KG', 'FL', 'geometry','freq', 'REINIGUNG MECHANISCH', 'C-ENTFERNUNG',
-       'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg',
-       'sum_PE', 'sum_TM(t)', 'mean_year', '%nitri','%no_nitri' ,'%before_reg','%PE_nonitri', 'PE_nonitri' ]]
+    #final=final[['BL', 'BKZ', 'GKZ', 'KG_NR', 'KG', 'FL', 'geometry','freq', 'REINIGUNG MECHANISCH', 'C-ENTFERNUNG',
+    #   'NITRIFIZIERUNG', 'N-ENTFERNUNG', 'P-ENTFERNUNG', 'before_reg',
+    #   'sum_PE', 'sum_TM(t)', 'mean_year', '%nitri','%no_nitri' ,'%before_reg','%PE_nonitri', 'PE_nonitri' ]]
     with open('final/'+filename+'.geojson', 'w') as f:
         f.write(final.to_json())
     return final
@@ -148,9 +157,13 @@ def final_merge_noe(extracted, filename):
 
     print(final.geometry.is_valid.value_counts())
     #getting relative values
-    final['%before_reg']=final.before_reg/final.freq*100
-    final['%no_nitri']=final.no_nitri/final.freq*100
-    final['%PE_nonitri']=(final.PE_nonitri/final.sum_PE)*100
+    final['%no_nitri_small']=final.no_nitri_small/final.freq_small*100
+    final['%no_nitri_medium']=final.no_nitri_medium/final.freq_medium*100
+    final['%no_nitri_tot']=final.no_nitri_tot/final.freq_tot*100
+
+    final['%PE_nonitri_small']=(final.PE_nonitri_small/final.sum_PE_small)*100
+    final['%PE_nonitri_medium']=(final.PE_nonitri_medium/final.sum_PE_medium)*100
+    final['%PE_nonitri_tot']=(final.PE_nonitri_tot/final.sum_PE_tot)*100
 
     if len(extracted)==len(final):
         print('perfect merge')

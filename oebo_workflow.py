@@ -83,19 +83,37 @@ gdf.to_file('half-way/oebo.gpkg', driver='GPKG')
 #perform geo manipulations
 joined=sjoin(gdf, 'oebo')
 
-#extract data
-extracted=extract_data_oebo(joined)
+joined['design']=np.where(joined.EW60<50, 'small','medium')
+small=joined[joined.design=='small']
+medium=joined[joined.design=='medium']
+
+small=extract_data_oebo(small)
+medium=extract_data_oebo(medium)
+
+total=small.merge(medium, on='KG_NR',how='outer',suffixes=('_small','_medium'))
+
+print(total)
+print(total.columns)
+
+total=total.fillna(0)
+total['freq_tot']=total.freq_small+total.freq_medium
+total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
+total['no_nitri_tot']=total.NITRIFIZIERUNG_small+total.NITRIFIZIERUNG_medium
+total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
+total=total.fillna(0)
+
+print(total)
+print(total.columns)
+
+
 
 #reinsert 
-final=final_merge_oebo(extracted)
+final=final_merge_oebo(total, 'oebo')
 
-#getting relative values
-final['%nitri']=final.NITRIFIZIERUNG/final.freq*100
-final['%no_nitri']=100-final['%nitri']
-final['%before_reg']=final.before_reg/final.freq*100
-final['no_nitri']=final.freq-final.NITRIFIZIERUNG
+print(final)
+print(final.columns)
 
-#standardize to general format
+"""#standardize to general format
 standard=final[['BKZ', 'BL', 'FL', 'GKZ', 'KG', 'KG_NR', 'before_reg', 'freq',
        'mean_year', 'sum_PE', 'geometry', '%before_reg',
        '%no_nitri']]
@@ -107,3 +125,4 @@ with open('final/oebo.geojson', 'w') as f:
 ##### col names for standardization to do
 with open('standard/oebo.geojson', 'w') as f:
     f.write(standard.to_json())
+"""

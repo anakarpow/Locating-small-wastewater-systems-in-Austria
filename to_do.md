@@ -6,9 +6,6 @@
 # then send to Gunter
 
 
-# get size integration
-    > oebo and noe
-
 
 # WRITING 
     > introduction : add!
@@ -34,10 +31,6 @@
 # write interpretation
     >add some graphs as written
     >consider further analisys carintia
-
-# get KKA separate files
-    >DONE
-    > integrate in main workflow
 
 # new points Gunter
     >put count anlage map
