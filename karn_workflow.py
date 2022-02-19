@@ -27,7 +27,7 @@ conditions_tech=[
     data['Kat.']== 13
 ]
 
-outcome_tech = ['3-k', 'Filtersack','Kompost', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 
+outcome_tech = ['Primary', 'Primary','Kompost', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 
                     'Fest', 'Wirbel', 'BKF', 'PKA','Unbekannt']
 data=logical_column(conditions_tech, outcome_tech, data,'tech_type')
 data.rename(columns={'Unnamed: 6':'KG','Von':'year', 
@@ -52,7 +52,7 @@ data['year']=data['year'].replace('?', '0')
 #add column built before 1991
 data.year=data.year.astype(int)
 
-data['no_nitri']=data.tech_type=='3-k'
+data['no_nitri']=data.tech_type=='Primary'
 
 
 data.to_excel('half-way/Karn.xlsx',index=False)

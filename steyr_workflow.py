@@ -36,7 +36,7 @@ conditions_tech = [
 ]
 
 
-outcome_tech = ['Unbekannt', '3-k', 'Bel.', 'SBR', 'MBR', 
+outcome_tech = ['Unbekannt', 'Primary', 'Bel.', 'SBR', 'MBR', 
                 'Tropf', 'Fest',  'BKF', 'PKA',
                 'Tauch', 'Andere']
 

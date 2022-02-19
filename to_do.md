@@ -5,8 +5,6 @@
 # start summarisiing and writing 
 # then send to Gunter
 
-
-
 # WRITING 
     > introduction : add!
     > goals : add!
@@ -17,12 +15,6 @@
     >interpretation : 
         >add!!
 
-    
-
-# integrate tech_type
-    > unify final geojson categories. how to ? columns ?
-    > check with original
-    > plot and analyse
 
 # write results
     >add mean value in graphs 
@@ -35,13 +27,20 @@
 # new points Gunter
     >put count anlage map
     >chnage no data color and viusalize 0 
-    >filtersack == primary
     > add point coordinates study when available
         > temporal ?
     > % of state by tech type 
     
+# all graphs and plots
+    > remove title
 
 
+
+
+# integrate tech_type
+    > unify final geojson categories. how to ? columns ?
+    > check with original
+    > plot and analyse
 
 ### Status
 # 6 BL reached final phase

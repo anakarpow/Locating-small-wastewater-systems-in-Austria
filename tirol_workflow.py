@@ -27,9 +27,9 @@ conditions_tech = [
 ]
 
 
-outcome_tech = [ '3-k', 'Bel.', 'SBR', 'MBR', 
+outcome_tech = [ 'Primary', 'Bel.', 'SBR', 'MBR', 
                 'Tropf','Rotation', 'Fest', 'Wirbel' ,
-                'BKF', 'PKA','Filtersack', 'Kompost','Unbekannt']
+                'BKF', 'PKA','Primary', 'Kompost','Unbekannt']
 data=logical_column(conditions_tech,outcome_tech,data,'tech_type')
 conditions_bau = [
     data["mech."] == 'x',
@@ -75,7 +75,7 @@ data.year=data.year.astype(int)
 
 #add column built before 1991
 data['before_reg']=data.year<=1991
-data['no_nitri']=data.tech_type=='3-k'
+data['no_nitri']=data.tech_type=='Primary'
 
 
 data.drop(columns=['Bis','m³/d', 'l/s', 'EW60 / m³/d','EW60 / l/s (10h)'], inplace=True)

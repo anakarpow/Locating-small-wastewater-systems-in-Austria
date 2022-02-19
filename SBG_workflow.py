@@ -22,7 +22,7 @@ conditions_tech=[
     data['Kat']== 13
 ]
 
-outcome_tech = ['3-k', 'Filtersack','Kompost', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 
+outcome_tech = ['Primary', 'Primary','Kompost', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 
                     'Fest', 'Wirbel', 'BKF', 'PKA','Unbekannt']
 
 data=logical_column(conditions_tech,outcome_tech,data, 'tech_type')
@@ -43,7 +43,7 @@ data.PE=data.PE.replace(' ', 0).astype(float)
 data.year=data.year.astype(int)
 
 data['before_reg']=data.year==1991
-data['no_nitri']=data.tech_type=='3-k'
+data['no_nitri']=data.tech_type=='Primary'
 
 
 data.to_excel('half-way/SBG.xlsx',index=False)

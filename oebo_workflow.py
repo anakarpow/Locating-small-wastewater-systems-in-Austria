@@ -98,7 +98,8 @@ print(total.columns)
 total=total.fillna(0)
 total['freq_tot']=total.freq_small+total.freq_medium
 total['sum_PE_tot']=total.sum_PE_small+total.sum_PE_medium
-total['no_nitri_tot']=total.NITRIFIZIERUNG_small+total.NITRIFIZIERUNG_medium
+total['nitri_tot']=total.NITRIFIZIERUNG_small+total.NITRIFIZIERUNG_medium
+total['no_nitri_tot']=total.freq_tot-total.nitri_tot
 total['PE_nonitri_tot']=total.PE_nonitri_small+total.PE_nonitri_medium
 total=total.fillna(0)
 
