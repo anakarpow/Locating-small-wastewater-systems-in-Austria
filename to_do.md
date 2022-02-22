@@ -25,12 +25,20 @@
     >consider further analisys carintia
 
 # new points Gunter
-    >put count anlage map
-    >chnage no data color and viusalize 0 
-    > add point coordinates study when available
-        > temporal ?
     > % of state by tech type 
     
+# add point coordinates study when available
+        > temporal ?
+        > how to visualize time series ?
+
+# apparently medium non nitrifying wwtps have been built after 1991
+    > check and doublechek
+    > check database
+    
+
+# idetify losses
+    > describe what is lost
+
 # all graphs and plots
     > remove title
 

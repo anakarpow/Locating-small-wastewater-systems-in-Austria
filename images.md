@@ -9,10 +9,14 @@
 
 # Distribution of WWTPs
 ![alt text](graphs/temporal.png "Title")
-![alt text](graphs/freq_BL.png "Title")
-![alt text](graphs/PE_sum_BL.png "Title")
+![alt text](graphs/freq_BL+sum_PE.png "Title")
 ![alt text](graphs/%pop_BL.png "Title")
+![alt text](plots/freq_all.png "Title")]
+![alt text](plots/freq_small.png "Title")]
+![alt text](plots/freq_medium.png "Title")]
+![alt text](plots/freq_both.png "Title")]
 ![alt text](plots/all_PE.png "Title")]
+![alt text](plots/PE_both.png "Title")]
 ![alt text](plots/all_PE_pop.png "Title")
 
 # Outdated WWTPs

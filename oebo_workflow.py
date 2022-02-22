@@ -77,6 +77,8 @@ gdf['before_reg']=gdf.INBETRIEBNAHME<=1991
 #replace with bool values for further analisys
 gdf.replace({'j':True,'n':False}, inplace=True)
 
+
+
 gdf.to_excel('half-way/oebo.xlsx', index=False)
 gdf.to_file('half-way/oebo.gpkg', driver='GPKG')
 
