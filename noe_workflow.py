@@ -102,7 +102,7 @@ no_type=data[data.tech_type=='Unbekannt']
 data.to_excel('half-way/noe.xlsx',index=True)
 
 #anyway in halfway
-#no_geo.to_excel('half-way/no_geo_noe.xlsx')
+no_geo.to_excel('half-way/no_geo_noe.xlsx')
 no_type.to_excel('half-way/no_type_noe.xlsx')
 
 

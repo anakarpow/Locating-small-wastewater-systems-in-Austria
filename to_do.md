@@ -6,6 +6,7 @@
 # then send to Gunter
 
 # WRITING 
+
     > introduction : add!
     > goals : add!
     >fundamentals : start!
@@ -24,26 +25,25 @@
     >add some graphs as written
     >consider further analisys carintia
 
+
+# CODING
+
 # new points Gunter
     > % of state by tech type 
+    > does it make sense ??
     
 # add point coordinates study when available
-        > temporal ?
         > how to visualize time series ?
 
 # apparently medium non nitrifying wwtps have been built after 1991
-    > check and doublechek
-    > check database
+    > confimerd thoughout data. 
+    > now check at source. excel or register
     
-
-# idetify losses
-    > describe what is lost
-
 # all graphs and plots
     > remove title
 
 
-
+# SECONDARY
 
 # integrate tech_type
     > unify final geojson categories. how to ? columns ?
@@ -57,8 +57,7 @@
     >minor BLs, missing geo reference
     >what to do ?
 
-# which scheme to use for plotting?
-    > make some research !!
+
 
 # ARCHIVE
 # create testing tool : >>>>> DONE

@@ -56,6 +56,7 @@ data['no_nitri']=data.tech_type=='Primary'
 
 
 data.to_excel('half-way/Karn.xlsx',index=False)
+
 #about 130 have no KG
 no_ref=data[data.KG.isna()]
 no_ref.to_excel('half-way/no_geo_karn.xlsx', index=False)
