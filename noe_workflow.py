@@ -98,6 +98,7 @@ data.rename(columns={'EW60_BEWILLIGT':'EW60','BEWILLIGUNGSJAHR':'INBETRIEBNAHME'
 no_geo=data[data.RECHTSWERT.isna()]
 no_type=data[data.tech_type=='Unbekannt']
 
+data=data[(data.activity!='Stillgelegt')&(data.activity!='Unbekannt')]
 #print out esxcel. needs column dropping
 data.to_excel('half-way/noe.xlsx',index=True)
 

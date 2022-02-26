@@ -88,6 +88,11 @@ merged['design']=np.where(merged.PE<50, 'small','medium')
 small=merged[merged.design=='small']
 medium=merged[merged.design=='medium']
 
+outlaw=medium[(medium.no_nitri==True)&(medium.year>1991)]
+
+with open('half-way/outlaw_tirol.geojson', 'w') as f:
+    f.write(outlaw.to_json())
+
 small=extract_data_nospat(small)
 medium=extract_data_nospat(medium)
 

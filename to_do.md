@@ -28,6 +28,9 @@
 
 # CODING
 
+# techtype
+    >finish graphs
+
 # new points Gunter
     > % of state by tech type 
     > does it make sense ??
@@ -36,8 +39,8 @@
         > how to visualize time series ?
 
 # apparently medium non nitrifying wwtps have been built after 1991
-    > confimerd thoughout data. 
-    > now check at source. excel or register
+    > noe is checked
+    > oebo WIS disapperad. wait and do the rest first
     
 # all graphs and plots
     > remove title
