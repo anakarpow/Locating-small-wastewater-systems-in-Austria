@@ -1,57 +1,80 @@
 ### To do's
+# questions for Gunter
+    > OWAV states 17500 small WWTPS direkteineitung. 27540 if mech treatment is counted. what does this mean ?
 
-# resolution per KG and PG seems achieved
-# identifying non-nitrifying wwtps seeems achieved
-# start summarisiing and writing 
-# then send to Gunter
+
+# goals for next draft 
+    > finish 
+        >methods check!
+        >fundamentals check!
+        >first part of results to do
+        >goals check!
+
+# before sending  to Gunter
+    > think and rewrite results and discussion
+    > draft the point analisys
+    > draft interpretation and conslusion
+    > read everything and schek for consistency in :
+        > vocabulary especially design size categories
+    > warnings about :
+        > graphs and plots only drafts. 
+            >titles will be removed. grpahically optimized. legends checked and replaced.
+        > 
+
+# QUESTION
+    > point analisys
+        >check data. especially primary after reg
 
 # WRITING 
-
-    > introduction : add!
-    > goals : add!
-    >fundamentals : start!
-    >methods : 
+    HIGH PRIORITY
+    > thoughly think on spatial analisys. what i want to show ? !!!!!!!!!!!!
+    > goals : check and update if necessary
+    > results ad discussion
+        >revise with new graphs
+        >add comments on size
+    > methods : 
         >add approach ? 
-        >evise data analisys
+        >revise data analisys?
+    
+    LOW PRIORITY
+    > introduction : rewrite. read first!
     >interpretation : 
         >add!!
+    > search for 
+        > NGP Einzugsgebieten mit Nährstoff Problematik map
+        > small WWTPS are importnatn too. why?
 
+# CODING
+
+# insert connection rate in fed states distribution
+
+# insert % in tech type bargraph
+
+# add point coordinates study when available
+    > how to visualize time series ?
+
+# apparently medium non nitrifying wwtps have been built after 1991
+    > noe is checked
+    > oebo WIS disapperad. wait and do the rest first
+
+# how many settlements smaller 2000PE rely only on small WWTPS?
+
+# identify lost desing sizes in spatial datset chapter
+
+
+
+# WRITING
+# CODING
+
+# examine settlements smanller than 2000PE
 
 # write results
     >add mean value in graphs 
     >add mean value popNoNitri in plot
 
-# write interpretation
-    >add some graphs as written
-    >consider further analisys carintia
-
-
-# CODING
-
-# techtype
-    >finish graphs
-
-# new points Gunter
-    > % of state by tech type 
-    > does it make sense ??
-    
-# add point coordinates study when available
-        > how to visualize time series ?
-
-# apparently medium non nitrifying wwtps have been built after 1991
-    > noe is checked
-    > oebo WIS disapperad. wait and do the rest first
-    
 # all graphs and plots
     > remove title
 
-
-# SECONDARY
-
-# integrate tech_type
-    > unify final geojson categories. how to ? columns ?
-    > check with original
-    > plot and analyse
 
 ### Status
 # 6 BL reached final phase
