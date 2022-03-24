@@ -10,16 +10,24 @@
         >first part of results to do
         >goals check!
 
+# to do next
+    > draft interpretation and conslusion 1.5h
+        > insert cits in interpretation!!
+    >  read everything and schek for consistency in : 
+        > vocabulary especially design size categories. write what is small and what is medium. 1h
+    
+
+
 # before sending  to Gunter
     > think and rewrite results and discussion
     > draft the point analisys
-    > draft interpretation and conslusion
-    > read everything and schek for consistency in :
-        > vocabulary especially design size categories
+        > recategorize in point_geo.py
+        >connection to water quality?
+        >time series?
     > warnings about :
         > graphs and plots only drafts. 
-            >titles will be removed. grpahically optimized. legends checked and replaced.
-        > 
+            >titles will be removed. grpahically optimized. legends checked and replaced. 
+        > small and medium categories instead of PE anagabe
 
 # QUESTION
     > point analisys
