@@ -73,7 +73,7 @@ pyproj @ file:///C:/ci/pyproj_1614278136892/work
 pyrsistent @ file:///C:/ci/pyrsistent_1600141795814/work
 python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
 pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
-pywin32==228
+pywin32>=301
 pywinpty==0.5.7
 pyzmq @ file:///C:/ci/pyzmq_1628276144921/work
 Rtree @ file:///C:/ci/rtree_1618421009405/work
