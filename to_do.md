@@ -1,96 +1,35 @@
 ### To do's
-# questions for Gunter
-    > OWAV states 17500 small WWTPS direkteineitung. 27540 if mech treatment is counted. what does this mean ?
 
+# goals for next draft
+    > write more for spatial points ?
 
-# goals for next draft 
-    > finish 
-        >methods check!
-        >fundamentals check!
-        >first part of results to do
-        >goals check!
-
-# to do next
-    > draft interpretation and conslusion 1.5h
-        > insert cits in interpretation!!
-    >  read everything and schek for consistency in : 
-        > vocabulary especially design size categories. write what is small and what is medium. 1h
-    
-
-
-# before sending  to Gunter
-    > think and rewrite results and discussion
-    > draft the point analisys
-        > recategorize in point_geo.py
-        >connection to water quality?
-        >time series?
-    > warnings about :
-        > graphs and plots only drafts. 
-            >titles will be removed. grpahically optimized. legends checked and replaced. 
-        > small and medium categories instead of PE anagabe
-
-# QUESTION
-    > point analisys
-        >check data. especially primary after reg
 
 # WRITING 
     HIGH PRIORITY
-    > thoughly think on spatial analisys. what i want to show ? !!!!!!!!!!!!
-    > goals : check and update if necessary
-    > results ad discussion
-        >revise with new graphs
-        >add comments on size
-    > methods : 
-        >add approach ? 
-        >revise data analisys?
-    
+    > soure control
+
     LOW PRIORITY
-    > introduction : rewrite. read first!
-    >interpretation : 
-        >add!!
+    > make map of Carintia study area
     > search for 
         > NGP Einzugsgebieten mit Nährstoff Problematik map
         > small WWTPS are importnatn too. why?
+    > map of Lower austria topogrpyh change
+    > topo_freq use map per 1000 pop instead???
 
 # CODING
+    > topo_freq use map per 1000 pop instead???
+    
+
 
 # insert connection rate in fed states distribution
 
-# insert % in tech type bargraph
-
-# add point coordinates study when available
-    > how to visualize time series ?
 
 # apparently medium non nitrifying wwtps have been built after 1991
     > noe is checked
     > oebo WIS disapperad. wait and do the rest first
 
-# how many settlements smaller 2000PE rely only on small WWTPS?
-
-# identify lost desing sizes in spatial datset chapter
-
-
-
-# WRITING
-# CODING
-
-# examine settlements smanller than 2000PE
-
-# write results
-    >add mean value in graphs 
-    >add mean value popNoNitri in plot
-
-# all graphs and plots
-    > remove title
-
-
-### Status
-# 6 BL reached final phase
-    >plot and analyze
-# 3 are missing
-    >minor BLs, missing geo reference
-    >what to do ?
-
+# questions for Gunter
+    > OWAV states 17500 small WWTPS direkteineitung. 27540 if mech treatment is counted. what does this mean ?
 
 
 # ARCHIVE

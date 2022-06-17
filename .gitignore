@@ -4,6 +4,9 @@ plotting_data/
 final/
 half-way/
 markdowns/
+*.gpkg
+*.csv
+*.xlsx
 plots/
 share/
 archive/

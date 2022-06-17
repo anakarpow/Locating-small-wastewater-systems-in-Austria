@@ -12,6 +12,9 @@ from gis_functions import *
 d='DATA/Sacken/Anlagendaten.xlsx'
 data=pd.read_excel(d)
 no_geo=data[data.Longitude.isna()]
+print(len(data))
+print(len(no_geo))
+
 no_geo.to_excel('half-way/no_geo_oebo.xlsx',index=False)
 data=data.dropna(how='any', subset= ['Longitude'])
 
@@ -78,9 +81,10 @@ gdf['before_reg']=gdf.INBETRIEBNAHME<=1991
 gdf.replace({'j':True,'n':False}, inplace=True)
 
 
-
 gdf.to_excel('half-way/oebo.xlsx', index=False)
 gdf.to_file('half-way/oebo.gpkg', driver='GPKG')
+gdf.to_file('half-way/oebo.shp')
+
 
 #perform geo manipulations
 joined=sjoin(gdf, 'oebo')
