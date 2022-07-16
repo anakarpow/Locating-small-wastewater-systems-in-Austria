@@ -4,6 +4,11 @@
     > write more for spatial points ?
 
 
+# after 1. correction
+- longer intro
+- comments
+
+- substitute all small and medium with numebrs: don't! wait for next mail
 # WRITING 
     HIGH PRIORITY
     > soure control
