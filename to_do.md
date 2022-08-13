@@ -5,7 +5,6 @@
 
 
 # after 1. correction
-- longer intro
 - comments
 
 - substitute all small and medium with numebrs: don't! wait for next mail

@@ -4,7 +4,7 @@ from functions import *
 import matplotlib.pyplot as plt
 from gis_functions import *
 
-d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA SBG NEU.xlsx'
+d = r'C:\Users\fabrizio\Documents\repos\MSC\DATA/KKA SBG NEU.xlsx'
 data, trial = reader(d, 'Daten SBG', header=11, test=False)
 conditions_tech=[
     data['Kat'] == 1,

@@ -4,7 +4,7 @@ from functions import *
 import matplotlib.pyplot as plt
 from  gis_functions import *
 
-d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA Tirol NEU.xlsx'
+d = r'C:\Users\fabrizio\Documents\repos\MSC\DATA/KKA Tirol NEU.xlsx'
 data, trial = reader(d, 'Daten Tirol', header=18, test=False)
 
 tech_type=data[[1, 2,3,  4,5,6,7,8,9,10,11,12,13]]

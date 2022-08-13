@@ -4,7 +4,7 @@ from functions import *
 import matplotlib.pyplot as plt
 from gis_functions import *
 
-d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA Kärnten NEU.xlsx'
+d = r'C:\Users\fabrizio\Documents\repos\MSC\DATA/KKA Kärnten NEU.xlsx'
 
 data, trial = reader(d, 'Data K', header=15, test=False)
 

@@ -3,7 +3,7 @@ import numpy as np
 from functions import *
 from gis_functions import extract_data_nospat, final_merge_nospat, join_nospat
 
-d = r'C:/Users/fabrizio/Documents/R_data/PROJECTS/MASTER/DATA/KKA STMK NEU DE.xlsx'
+d = r'C:\Users\fabrizio\Documents\repos\MSC\DATA/KKA STMK NEU DE.xlsx'
 
 data, trial = reader(d, 'Data Stmk', header=18, test=False)
 data.dropna(how='all', axis=1,inplace=True)
