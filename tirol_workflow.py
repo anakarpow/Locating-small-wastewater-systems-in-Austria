@@ -29,7 +29,7 @@ conditions_tech = [
 
 outcome_tech = [ 'Primary', 'Bel.', 'SBR', 'MBR', 
                 'Tropf','Rotation', 'Fest', 'Wirbel' ,
-                'BKF', 'PKA','Primary', 'Kompost','Unbekannt']
+                'BKF', 'PKA','Andere', 'Andere','Unbekannt']
 data=logical_column(conditions_tech,outcome_tech,data,'tech_type')
 conditions_bau = [
     data["mech."] == 'x',

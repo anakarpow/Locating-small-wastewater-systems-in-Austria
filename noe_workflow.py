@@ -63,9 +63,10 @@ conditions_tech = [
 ]
 
 
-outcome_tech = ['Unbekannt','Primary', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 'Fest', 'Wirbel', 'BKF', 'PKA','PKA', 'Primary',
-                'Kompost', 'Andere']
+outcome_tech = ['Unbekannt','Primary', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 'Fest', 'Wirbel', 'BKF', 'PKA','PKA', 'Andere',
+                'Andere', 'Andere']
 
+#changed filet and kompost to andere!
 #
 data=logical_column(conditions_tech,outcome_tech, data, 'tech_type' )
 data=col_dropper(data, data[col_list] )

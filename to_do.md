@@ -1,28 +1,18 @@
 ### To do's
 
-# goals for next draft
-    > write more for spatial points ?
+remove coords from graphs
+make plots bigger, place legend below not by side
+substitute text with leg label !!!!!!!!
 
 
-# after 1. correction
-- comments
 
-- substitute all small and medium with numebrs: don't! wait for next mail
 # WRITING 
-    HIGH PRIORITY
-    > soure control
-
-    LOW PRIORITY
-    > make map of Carintia study area
-    > search for 
-        > NGP Einzugsgebieten mit Nährstoff Problematik map
-        > small WWTPS are importnatn too. why?
-    > map of Lower austria topogrpyh change
-    > topo_freq use map per 1000 pop instead???
-
-# CODING
-    > topo_freq use map per 1000 pop instead???
-    
+-[] Affidavit
+-[x] Acknowledgements
+-[x] Summary
+-[] CV
+-[x] Abstact 
+-[x] and german version
 
 
 # insert connection rate in fed states distribution
