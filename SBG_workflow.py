@@ -22,7 +22,7 @@ conditions_tech=[
     data['Kat']== 13
 ]
 
-outcome_tech = ['Primary', 'Primary','Kompost', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 
+outcome_tech = ['Primary', 'Andere','Andere', 'Bel.', 'SBR', 'MBR', 'Tropf', 'RBC', 
                     'Fest', 'Wirbel', 'BKF', 'PKA','Unbekannt']
 
 data=logical_column(conditions_tech,outcome_tech,data, 'tech_type')

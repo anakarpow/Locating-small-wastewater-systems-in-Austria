@@ -1,19 +1,20 @@
 ### To do's
 
-remove coords from graphs
-make plots bigger, place legend below not by side
-substitute text with leg label !!!!!!!!
-
-
 
 # WRITING 
 -[] Affidavit
 -[x] Acknowledgements
 -[x] Summary
--[] CV
+-[x] CV
 -[x] Abstact 
 -[x] and german version
+-[x] comment on filter and compost as 3.Aevka!
+    check again and add some blabla
 
+
+# CODING
+- [x] rerun get_pop !
+- 
 
 # insert connection rate in fed states distribution
 
