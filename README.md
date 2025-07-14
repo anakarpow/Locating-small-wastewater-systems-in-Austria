@@ -1,4 +1,4 @@
-### Locating small wastewater systems in Austria
+# Locating small wastewater systems in Austria
 
 ## Produced for my master thesis, my first data project
 
@@ -7,24 +7,23 @@ still had a static data approach with scripts working over static files.
 
 no homogenity, order nore elegnace. just functionality
 
-## results
+# Results
 
 ### Key Visualizations
 
-![Age Distribution](age2.png)
-*Distribution of wastewater treatment plants by age categories*
-
-![Non-nitrification Percentage](all_nonitri_percent.png)
-*Percentage of wastewater treatment plants without nitrification processes across Austria*
+![Topography and Technology](topo_points_tech.png)
+*Relationship between topographical features and treatment plant technology distribution*  
+Small wastewater plants are often located in semi-montaneous areas where larger plants are not feasible. This plot shows the distribution of treatment technologies in relation to topography.
 
 ![Population Equivalents >1000](PE_1000_people.png)
-*Population equivalents for treatment plants serving more than 1000 people*
+*Percentage of population served by small WWTPs by municiplaity*  
+In semi-montaneous areas, small wastewater treatment plants are prevalent. This plot shows the percentage of the population served by these infrastructures across municipalities.
 
-![Topography and Technology](topo_points_tech.png)
-*Relationship between topographical features and treatment plant technology distribution*
 
-![WWTPs >1000 People](WWTPS_1000_people.png)
-*Location and distribution of wastewater treatment plants serving more than 1000 people*
+![Non-nitrification Percentage](nonitri.png)
+*Percentage of small wastewater treatment plants without nitrification processes by municipality*
 
-## show some graphs here which is the only good thing
+Explicit nitrification treatments are compuslory in Austria, but many small plants still lack these processes. This plot shows the distribution of non-nitrification plants across municipalities.
+
+
 
