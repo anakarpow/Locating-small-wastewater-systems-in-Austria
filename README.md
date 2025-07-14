@@ -8,9 +8,11 @@ no homogenity, order nore elegance. just functionality
 
 but at least the plots are nice
 
-# Results
+# Background
+Using static data files from a research database, the project analyzes the distribution and characteristics of small wastewater treatment plants (WWTPs) in Austria. The analysis focuses on the relationship between topography, technology used, and the population served by these plants.
 
-### Key Visualizations
+
+# Some Results
 
 ![Topography and Technology](plots/topo_points_tech.png)
 *Relationship between topographical features and treatment plant technology distribution*  
