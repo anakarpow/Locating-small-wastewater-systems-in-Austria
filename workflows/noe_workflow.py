@@ -9,7 +9,7 @@
 import geopandas
 import pandas as pd
 import matplotlib.pyplot as plt
-from functions import *
+from unify.functions import *
 from gis_functions import *
 
 d = r'C:\Users\fabrizio\Documents\repos\MSC\DATA/KKA NÖ NEU NEW.xlsx'

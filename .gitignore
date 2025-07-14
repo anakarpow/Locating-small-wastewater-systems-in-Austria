@@ -7,7 +7,6 @@ markdowns/
 *.gpkg
 *.csv
 *.xlsx
-plots/
 share/
 archive/
 graphs/

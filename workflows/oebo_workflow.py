@@ -5,7 +5,7 @@
 import geopandas as geopandas
 import pandas as pd
 import matplotlib.pyplot as plt
-from functions import *
+from unify.functions import *
 from gis_functions import *
 
 #import anlagedata
