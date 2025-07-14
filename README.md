@@ -11,7 +11,7 @@ no homogenity, order nore elegnace. just functionality
 
 ### Key Visualizations
 
-![Age Distribution](age_1.png)
+![Age Distribution](age2.png)
 *Distribution of wastewater treatment plants by age categories*
 
 ![Non-nitrification Percentage](all_nonitri%.png)
