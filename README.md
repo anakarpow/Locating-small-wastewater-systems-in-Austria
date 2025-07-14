@@ -1,11 +1,12 @@
-# Locating small wastewater systems in Austria
+# Master Thesis : Locating small wastewater systems in Austria
+ 
+### It was my first big project (2020), and looking at the code i can tell ;)
 
-## Produced for my master thesis, my first data project
-
-## status of code : it was my first big project, and looking at the code i can tell.
 still had a static data approach with scripts working over static files.
 
-no homogenity, order nore elegnace. just functionality
+no homogenity, order nore elegance. just functionality
+
+but at least the plots are nice
 
 # Results
 
