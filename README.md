@@ -14,7 +14,7 @@ no homogenity, order nore elegnace. just functionality
 ![Age Distribution](age2.png)
 *Distribution of wastewater treatment plants by age categories*
 
-![Non-nitrification Percentage](all_nonitri%.png)
+![Non-nitrification Percentage](all_nonitri_percent.png)
 *Percentage of wastewater treatment plants without nitrification processes across Austria*
 
 ![Population Equivalents >1000](PE_1000_people.png)
